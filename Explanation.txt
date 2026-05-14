@@ -1,0 +1,103 @@
+SMART CONTRACT INTERACTION BASICS
+=================================
+
+PROJECT OVERVIEW
+----------------
+This project demonstrates a complete token ecosystem with three interconnected smart contracts:
+1. ERC-20 Token (Atnam) - Custom cryptocurrency
+2. ERC-721 NFT Collection (MyNFT) - Digital collectibles
+3. ERC-1155 Game Items (MyERC1155) - In-game assets
+
+CONTRACT DETAILS
+----------------
+
+1. ATNAM (ERC-20 Token)
+   - Name: Atnam Token
+   - Symbol: ATN
+   - Decimals: 18
+   - Total Supply: 10,000 ATN
+   - Features: Standard ERC-20 implementation with transfers, approvals, and allowances
+
+2. MYNFT (ERC-721 NFT Collection)
+   - Name: MyNFT Collection
+   - Symbol: MNFT
+   - Mint Price: 100 ATN tokens
+   - Features: ERC-721 compliant NFTs with ownership tracking and approvals
+
+3. MYERC1155 (ERC-1155 Game Items)
+   - Name: Game Items
+   - Symbol: GITM
+   - Item Price: 1 ERC-721 NFT
+   - Features: Multi-token standard supporting both fungible and non-fungible assets
+
+WORKFLOW DEMONSTRATED
+---------------------
+1. Token Creation: Mint ERC-20 tokens (Atnam)
+2. Cross-Contract Purchase: Buy ERC-721 NFTs using ERC-20 tokens
+3. Advanced Interaction: Buy ERC-1155 items using ERC-721 NFTs
+4. Contract-to-Contract Calls: Multiple contracts interacting seamlessly
+5. Approval Mechanisms: Both ERC-20 and ERC-721 approval systems
+
+KEY FUNCTIONS
+-------------
+
+ERC-20 (Atnam.sol):
+- approve(spender, amount) - Grant token spending permission
+- transferFrom(from, to, amount) - Transfer tokens on behalf
+- balanceOf(account) - Check token balance
+
+ERC-721 (MyNFT.sol):
+- mint() - Purchase NFT with ATN tokens
+- setApprovalForAll(operator, approved) - Grant NFT management rights
+- transferFrom(from, to, tokenId) - Transfer NFT ownership
+
+ERC-1155 (MyERC1155.sol):
+- buyItem(itemId) - Purchase item with ERC-721 NFT
+- balanceOf(account, id) - Check item balance
+- transferFrom(from, to, id, amount) - Transfer items
+
+DEPLOYMENT INSTRUCTIONS
+-----------------------
+1. Deploy Atnam.sol (ERC-20 Token)
+2. Deploy MyNFT.sol with Atnam contract address
+3. Deploy MyERC1155.sol with MyNFT contract address
+
+USAGE SEQUENCE
+--------------
+1. User approves MyNFT contract to spend ATN tokens
+2. User calls mint() on MyNFT to purchase NFT
+3. User approves MyERC1155 contract to manage NFTs
+4. User calls buyItem() on MyERC1155 to purchase items
+
+TECHNICAL FEATURES
+------------------
+- Solidity ^0.8.0
+- Standard compliant implementations
+- Event emissions for all transactions
+- Proper error handling with require statements
+- Inheritance-based architecture
+
+TESTING
+-------
+All contracts tested on Remix IDE with JavaScript VM
+- Successful token transfers
+- Cross-contract interactions
+- Approval workflows
+- Error condition handling
+
+REFERENCES
+----------
+- How to create ERC-20 Smart Contracts: Pepcoding youtube
+- ERC-20 Token Standard : https://ethereum.org/developers/docs/standards/tokens/erc-20/
+- Mint nft with erc20 tokens: Shobhit youtube channel
+- Write an ERC-721 NFT token from SCRATCH - Solidity Smart Contract Tutorial! : Atharva Deosthale
+- ERC-20 Standard: https://eips.ethereum.org/EIPS/eip-20
+- ERC-721 Standard: https://eips.ethereum.org/EIPS/eip-721
+- ERC-1155 Standard: https://eips.ethereum.org/EIPS/eip-1155
+
+FILES INCLUDED
+--------------
+- Atnam.sol (ERC-20 Token Contract)
+- MyNFT.sol (ERC-721 NFT Contract)
+- MyERC1155.sol (ERC-1155 Items Contract)
+- README.txt (This file)
